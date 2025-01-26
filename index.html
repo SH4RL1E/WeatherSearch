@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Searcher</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4a90e2, #f7f7f7);
+            margin: auto;
+            height: 120vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 325px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+        }
+
+        .card h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .weatherInput {
+            padding: 10px;
+            width: 80%;
+            margin: 20px 0;
+            border: 2px solid #4a90e2;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .weatherInput:focus {
+            outline: none;
+            border-color: #f39c12;
+            box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
+        }
+
+        .weatherBtn {
+            padding: 10px 20px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .weatherBtn:hover {
+            background-color: #f39c12;
+        }
+
+        .weatherBtn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: all 0.4s ease;
+        }
+
+        .weatherBtn:hover:before {
+            transform: translateX(0);
+        }
+
+        .loading {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .loading span {
+            display: inline-block;
+            background: #4a90e2;
+            width: 6px;
+            height: 25px;
+            margin: 0 2px;
+            border-radius: 10px;
+            animation: raindrop 1s infinite ease-in-out;
+        }
+
+        .loading span:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .loading span:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes raindrop {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .weatherpreview {
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .weatherpreview h3 {
+            color: #4a90e2;
+        }
+
+        .weatherpreview p {
+            color: #333;
+        }
+
+        .weatherpreview img {
+            width: 50px;
+            height: 50px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<section class="section" id="weather">
+    <div class="card">
+        <h2>Weather Searcher</h2>
+        <div class="weatherpreview" id="weatherpreview"></div>
+        <form id="weatherForm">
+            <input type="text" class="weatherInput" id="weatherInput" placeholder="Enter Place Name..." autofocus required />
+            <button type="submit" class="weatherBtn">Search</button>
+        </form>
+        <!-- Loading Animation -->
+        <div class="loading" id="loading">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+  </html>
+  
